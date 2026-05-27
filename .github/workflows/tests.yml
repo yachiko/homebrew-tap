@@ -36,14 +36,14 @@ jobs:
       - name: brew audit
         run: |
           shopt -s nullglob
-          formulas=(Formula/*.rb)
-          if [ ${#formulas[@]} -eq 0 ]; then
-            echo "No formulas yet — skipping audit"
+          casks=(Casks/*.rb)
+          if [ ${#casks[@]} -eq 0 ]; then
+            echo "No casks yet — skipping audit"
             exit 0
           fi
-          for f in "${formulas[@]}"; do
+          for f in "${casks[@]}"; do
             name=$(basename "$f" .rb)
             echo "::group::$name"
-            brew audit --strict --formula "yachiko/tap/$name"
+            brew audit --strict --cask "yachiko/tap/$name"
             echo "::endgroup::"
           done
