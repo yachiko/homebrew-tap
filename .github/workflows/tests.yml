@@ -21,8 +21,17 @@ jobs:
 
       - uses: Homebrew/actions/setup-homebrew@6eaeff80e7e5c43087c0e5eb5aa82120399e9c91  # master @ 2026-05
 
+      # `brew audit` only accepts formula names (not paths) and resolves them
+      # through a real tap on disk. Symlink the checkout in so audit/style
+      # can address each formula as `yachiko/tap/<name>`.
+      - name: Register checkout as a Homebrew tap
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/yachiko/homebrew-tap"
+          mkdir -p "$(dirname "$tap_dir")"
+          ln -s "$GITHUB_WORKSPACE" "$tap_dir"
+
       - name: brew style
-        run: brew style Formula/
+        run: brew style yachiko/tap
 
       - name: brew audit
         run: |
@@ -33,7 +42,8 @@ jobs:
             exit 0
           fi
           for f in "${formulas[@]}"; do
-            echo "::group::$f"
-            brew audit --strict --formula "$f"
+            name=$(basename "$f" .rb)
+            echo "::group::$name"
+            brew audit --strict --formula "yachiko/tap/$name"
             echo "::endgroup::"
           done
