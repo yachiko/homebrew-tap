@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  audit:
+    name: brew style + audit
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+
+      - uses: Homebrew/actions/setup-homebrew@6eaeff80e7e5c43087c0e5eb5aa82120399e9c91  # master @ 2026-05
+
+      - name: brew style
+        run: brew style Formula/
+
+      - name: brew audit
+        run: |
+          shopt -s nullglob
+          formulas=(Formula/*.rb)
+          if [ ${#formulas[@]} -eq 0 ]; then
+            echo "No formulas yet — skipping audit"
+            exit 0
+          fi
+          for f in "${formulas[@]}"; do
+            echo "::group::$f"
+            brew audit --strict --formula "$f"
+            echo "::endgroup::"
+          done
