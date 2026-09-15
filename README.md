@@ -11,13 +11,13 @@
 ## Install
 
 ```sh
-brew install yachiko/tap/clerk
-brew install yachiko/tap/fossor
+brew install --cask yachiko/tap/clerk
+brew install --cask yachiko/tap/fossor
 ```
 
-Either form works — `brew install yachiko/tap/<name>` auto-taps on first
-use, or you can `brew tap yachiko/tap` once and then `brew install <name>`.
-`brew install` autodetects casks, so no `--cask` flag is required.
+Either form works: `brew install --cask yachiko/tap/<name>` auto-taps on
+first use, or run `brew tap yachiko/tap` once and then
+`brew install --cask <name>`.
 
 ## What's here
 
