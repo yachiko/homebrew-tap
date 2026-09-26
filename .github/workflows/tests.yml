@@ -17,9 +17,9 @@ jobs:
     name: brew audit
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v6
 
-      - uses: Homebrew/actions/setup-homebrew@6eaeff80e7e5c43087c0e5eb5aa82120399e9c91  # master @ 2026-05
+      - uses: Homebrew/actions/setup-homebrew@e99025eb970cfa124b8284a35463d87426917478  # master @ 2026-05
 
       # `brew audit` only accepts cask names (not paths) and resolves them
       # through a real tap on disk. Symlink the checkout in so audit/style
