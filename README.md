@@ -13,6 +13,7 @@
 ```sh
 brew install --cask yachiko/tap/clerk
 brew install --cask yachiko/tap/fossor
+brew install --cask yachiko/tap/lege
 ```
 
 Either form works: `brew install --cask yachiko/tap/<name>` auto-taps on
@@ -25,12 +26,14 @@ first use, or run `brew tap yachiko/tap` once and then
 |---|---|---|
 | [`clerk`](Casks/clerk.rb) | [yachiko/clerk](https://github.com/yachiko/clerk) | CLI for managing AWS Parameter Store secrets |
 | [`fossor`](Casks/fossor.rb) | [yachiko/fossor](https://github.com/yachiko/fossor) | Terminal UI for managing multiple Git repos |
+| [`lege`](Casks/lege.rb) | [yachiko/lege](https://github.com/yachiko/lege) | Minimal Markdown viewer and explorer |
 
 ## How updates land
 
-Casks in `Casks/` are written automatically by
+Casks in `Casks/` are written automatically on every upstream release, by
 [GoReleaser](https://goreleaser.com/customization/publish/homebrew_casks/)
-on every upstream release. A dedicated GitHub App (`yachiko-homebrew-bot`)
+(clerk, fossor) or by the project's own release workflow (lege, which builds
+natively per platform). A dedicated GitHub App (`yachiko-homebrew-bot`)
 signs the commits; no human pushes to this repo directly.
 
 ## License
