@@ -7,25 +7,25 @@ cask "clerk" do
     end
   end
 
-  version "0.0.8"
+  version "0.0.9"
 
   on_macos do
     on_arm do
-      sha256 "48d8e8dddc6a8b18574f54d3be7a36de597e231681648c7e0367801ec2612718"
+      sha256 "85011794fe5551d468e3f79feafffa5157ac43b6048e9f2fa448bb8bfa3cf1d2"
       url "https://github.com/yachiko/clerk/releases/download/v#{version}/clerk_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "8fe7cac484e4236efda21d66df2010a8e0cb74a47e4f77b77a49598ef354a578"
+      sha256 "ce8767ae37cbc99762e86b7c1367336ab242f144c9244454b48821837c5cbf74"
       url "https://github.com/yachiko/clerk/releases/download/v#{version}/clerk_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "924f697382a6c7fc1bcdf465eaac6998a4c2e020394b4571983fae55179cf432"
+      sha256 "fdfaeff2e24255831730b5a604e6fa509414e5717df52a184e390fe519aba6c9"
       url "https://github.com/yachiko/clerk/releases/download/v#{version}/clerk_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "987e36074ee573e718b3aeafa5f2a889efdf7b8090ce64b7b151b59752f9b19d"
+      sha256 "f538dfaccf9421faef50d833451aa106b4a003fefecce5f6bdd23cfdaae46aa9"
       url "https://github.com/yachiko/clerk/releases/download/v#{version}/clerk_#{version}_linux_amd64.tar.gz"
     end
   end
